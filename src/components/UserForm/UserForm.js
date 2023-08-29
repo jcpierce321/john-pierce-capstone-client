@@ -1,27 +1,110 @@
 import { useState } from 'react';
-import InstrumentDropdown from "../InstrumentDropdown/InstrumentDropdown";
+import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL;
+const PORT = process.env.REACT_APP_API_PORT || 8080;
 
 function UserForm() {
-    const [selectedInstrument, setSelectedInstrument] = useState('');
+    const instruments = [
+        'Flute',
+        'Piccolo',
+        'Oboe',
+        'Bassoon',
+        'B-flat Clarinet',
+        'E-flat Clarinet',
+        'Alto Saxophone',
+        'Tenor Saxophone',
+        'Baritone Saxophone'
+    ];
 
-    const handleInstrumentChange = e => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const [city, setCity] = useState('');
+    const [website_url, setWebsite_url] = useState('');
+    const [selectedInstrument, setSelectedInstrument] = useState('');
+    const [selectedInstruments, setSelectedInstruments] = useState(
+        instruments.map(item => ({
+            instrument: item,
+            selected: false
+        }))
+    );
+
+    const handleInstrumentChange = (e) => {
         setSelectedInstrument(e.target.value);
     };
 
+    const handleCheckboxChange = instrument => {
+        setSelectedInstruments(prevInstruments => {
+            return prevInstruments.map(item => ({
+                instrument: item.instrument,
+                selected: item.instrument === instrument ? !item.selected : item.selected
+            }));
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const instrumentPreferences = selectedInstruments
+        .filter(item => item.selected)
+        .map(item => item.instrument);
+
+        const userData = {
+            name,
+            email,
+            telephone,
+            city,
+            website_url,
+            primary_inst: selectedInstrument,
+            // instrument_preferences: instrumentPreferences
+        };
+
+        console.log('Sending userData:', userData); // Add this line
+
+        try {
+            const response = await axios.post(`${API_URL}:${PORT}/users`, userData);
+            console.log(response.data)
+        } catch (error) {
+            console.error('Error creating user:', error);
+        }
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Name</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
             <label>Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
             <label>Telephone</label>
-            <input type="tel" name="telephone" />
+            <input type="tel" name="telephone" value={telephone} onChange={e => setTelephone(e.target.value)} />
             <label>City</label>
-            <input type="text" name="city" />
+            <input type="text" name="city" value={city} onChange={e => setCity(e.target.value)} />
             <label>Website URL</label>
-            <input type="url" name="website" />
+            <input type="url" name="website" value={website_url} onChange={e => setWebsite_url(e.target.value)} />
             <label>Primary Instrument</label>
-            <InstrumentDropdown onChange={handleInstrumentChange} />
+            <select onChange={handleInstrumentChange}>
+                <option value="">Select Primary Instrument</option>
+                {instruments.map(instrument => (
+                    <option key={instrument} value={instrument}>
+                        {instrument}
+                    </option>
+                ))}
+            </select>
+            <label>I double on:</label>
+            {selectedInstruments.map(item => (
+                <div key={item.instrument}>
+                    <input
+                        type="checkbox"
+                        id={item.instrument}
+                        name={item.instrument}
+                        checked={item.selected}
+                        onChange={() => handleCheckboxChange(item.instrument)}
+                    />
+                    <label htmlFor={item.instrument}>{item.instrument}</label>
+                </div>
+            ))}
+            <button type='submit'>Submit</button>
         </form>
     );
 }
