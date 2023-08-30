@@ -42,6 +42,7 @@ function UserList () {
                         <p>City: {user.city}</p>
                         <p>Website: {user.website_url}</p>
                         <p>Primary Instrument: {user.primary_inst}</p>
+                        
                     </li>
                 ))}
             </ul>
