@@ -57,16 +57,33 @@ function UserForm() {
             city,
             website_url,
             primary_inst: selectedInstrument,
-            // instrument_preferences: instrumentPreferences
         };
 
-        console.log('Sending userData:', userData); // Add this line
-
         try {
-            const response = await axios.post(`${API_URL}:${PORT}/users`, userData);
-            console.log(response.data)
+            const userResponse = await axios.post(`${API_URL}:${PORT}/users`, userData);
+            console.log(userResponse.data)
+
+            const userId = userResponse.data.id;
+
+            const instrumentData = {
+                user_id: userId,
+                flute: selectedInstruments.find(item => item.instrument === 'Flute').selected,
+                piccolo: selectedInstruments.find(item => item.instrument === 'Piccolo').selected,
+                oboe: selectedInstruments.find(item => item.instrument === 'Oboe').selected,
+                bassoon: selectedInstruments.find(item => item.instrument === 'Bassoon').selected,
+                clarinetBb: selectedInstruments.find(item => item.instrument === 'B-flat Clarinet').selected,
+                clarinetEb: selectedInstruments.find(item => item.instrument === 'E-flat Clarinet').selected,
+                saxAlto: selectedInstruments.find(item => item.instrument === 'Alto Saxophone').selected,
+                saxTenor: selectedInstruments.find(item => item.instrument === 'Tenor Saxophone').selected,
+                saxBaritone: selectedInstruments.find(item => item.instrument === 'Baritone Saxophone').selected
+            };
+
+            const instrumentResponse = await axios.post(`${API_URL}:${PORT}/instruments`, instrumentData);
+
+            console.log('User data:', userResponse.data);
+            console.log('Instrument data', instrumentResponse.data);
         } catch (error) {
-            console.error('Error creating user:', error);
+            console.error('Error creating user or instrument preferences:', error);
         }
     };
 
