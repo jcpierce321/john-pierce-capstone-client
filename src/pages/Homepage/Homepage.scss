@@ -1,6 +1,10 @@
 @use "../../styles/partials/font";
 @use "../../styles/partials/colors" as *;
 
+* {
+    box-sizing: border-box;
+}
+
 .user-list {
     margin: 0;
 
@@ -24,9 +28,9 @@
         text-align: center;
     }
 
-    &__parent {
-        display: flex;
-    }
+    // &__parent {
+    //     display: flex;
+    // }
 
     &__child {
         flex: 1;
@@ -53,6 +57,20 @@
         line-height: 1rem;
         font-weight: 400;
         margin: 0.25rem 0 1rem 0;
+        color: $primary-black;
+    }
+
+    &__button {
+        width: 100%;
+        height: 2rem;
+        font-family: "Open Sans";
+        font-size: 0.688rem;
+        line-height: 1rem;
+        font-weight: 600;
+        background-color: $primary-orange;
+        color: white;
+        border-radius: 8px;
+        border: 2px solid $primary-blue;
     }
 
 }
