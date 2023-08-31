@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 
+
 function Header() {
 
   return (
@@ -8,15 +9,13 @@ function Header() {
       <div className="header__container">
         {/* <Link to={"/Warehouses"}><img className="header__logo" src={logo} alt="Logo for Instock Company" /></Link> */}
         <nav className="header__nav">
-          <NavLink
-            className={` ${({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "header__warehouses"}`}
-            to={"../UserForm"}
-          >
+          <NavLink to='/' className={` ${({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "header__inventory"}`}>
+            <div className="header__text">Home</div>
+          </NavLink>
+          <NavLink to="/UserSignup" className={` ${({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "header__warehouses"}`}>
             <div className="header__text">Register</div>
           </NavLink>
-          <NavLink
-            className={` ${({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "header__inventory"}`} to={"../UserSearchForm"}
-          >
+          <NavLink to='/UserSearch' className={` ${({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "header__inventory"}`}>
             <div className="header__text">Search</div>
           </NavLink>
         </nav>
