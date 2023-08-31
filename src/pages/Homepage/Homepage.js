@@ -32,17 +32,39 @@ function Homepage () {
     
     return (
         <div className="user-list">
-            <h1>User List</h1>
-            <ul>
+            <h1 className='user-list__title'>User List</h1>
+            <ul className="user-list__list">
                 {users.map(user => (
-                    <li key={user.id} className="user">
-                        <h2>{user.name}</h2>
-                        <p>Email: {user.email}</p>
-                        <p>Telephone: {user.telephone}</p>
-                        <p>City: {user.city}</p>
-                        <p>Website: {user.website_url}</p>
-                        <p>Primary Instrument: {user.primary_inst}</p>
-                        
+                    <li className='user-list__card' key={user.id} >
+                        <h2 className='user-list__username'>{user.name}</h2>
+                        <p className='user-list__text'>Primary Instrument: {user.primary_inst}</p>
+                        <div className='user-list__parent'>
+                          <div className='user-list__child'>
+                            <label className='user-list__label'>EMAIL</label>
+                            <p className='user-list__text'>{user.email}</p>
+                            <label className='user-list__label'>TELEPHONE</label>
+                            <p className='user-list__text'>{user.telephone}</p>
+                          </div>
+                          <div className='user-list__child'>
+                            <label className='user-list__label'>WEBSITE</label>
+                            <p className='user-list__text'>{user.website_url}</p>
+                            <label className='user-list__label'>CITY</label>
+                            <p className='user-list__text'>{user.city}</p>
+                          </div>
+                          <div>
+                            <p className='user-list__text'>
+                              Other Instruments: {user.flute && 'Flute, '}
+                              {user.piccolo && 'Piccolo, '}
+                              {user.oboe && 'Oboe, '}
+                              {user.bassoon && 'Bassoon, '}
+                              {user.clarinetBb && 'B-flat Clarinet, '}
+                              {user.clarinetEb && 'E-flat Clarinet, '}
+                              {user.saxAlto && 'Alto Saxophone, '}
+                              {user.saxTenor && 'Tenor Saxophone, '}
+                              {user.saxBaritone && 'Baritone Saxophone'}
+                            </p>
+                          </div>
+                        </div>
                     </li>
                 ))}
             </ul>

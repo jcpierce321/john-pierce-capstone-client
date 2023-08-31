@@ -1,0 +1,33 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/colors" as *;
+
+a {
+    text-decoration: none;
+    color: $primary-black;
+}
+
+.header {
+    background-color: $primary-blue; 
+
+    &__nav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__title {
+        font-family: "open Sans";
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &__text {
+        font-family: "Open Sans";
+        font-size: 1rem;
+        line-height: 1.625rem;
+        font-weight: 400;
+    }
+
+
+}
