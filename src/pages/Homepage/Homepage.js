@@ -67,7 +67,7 @@ function Homepage () {
                         </div>
                         
                         
-                        <div>
+                        <div className='user-list__card-content'>
                           <label className='user-list__label'>SECONDARY INSTRUMENTS</label>
                           <ul>
                             {Object.entries(user)

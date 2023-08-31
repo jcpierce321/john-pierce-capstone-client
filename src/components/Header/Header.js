@@ -6,7 +6,7 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="header__container">
+      <div>
         <h1 className="header__title">DUBLR</h1>
         {/* <Link to={"/Warehouses"}><img className="header__logo" src={logo} alt="Logo for Instock Company" /></Link> */}
         <nav className="header__nav">

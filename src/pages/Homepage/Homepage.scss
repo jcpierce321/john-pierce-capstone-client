@@ -7,6 +7,9 @@
 
 .user-list {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__list {
         list-style: none;
@@ -14,10 +17,18 @@
     }
 
     &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 36rem;
         border: 2px solid $primary-blue;
         border-radius: 8px;
         padding: 1rem;
         margin-bottom: 2rem;
+    }
+
+    &__card-content {
+        flex-grow: 1;
     }
 
     &__title {
@@ -71,6 +82,7 @@
         color: white;
         border-radius: 8px;
         border: 2px solid $primary-blue;
+        margin-top: auto;
     }
 
 }

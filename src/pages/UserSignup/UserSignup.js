@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './UserSignup.scss';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 8080;
@@ -75,19 +76,19 @@ function UserSignup() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
-            <label>Email</label>
-            <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
-            <label>Telephone</label>
-            <input type="tel" name="telephone" value={telephone} onChange={e => setTelephone(e.target.value)} />
-            <label>City</label>
-            <input type="text" name="city" value={city} onChange={e => setCity(e.target.value)} />
-            <label>Website URL</label>
-            <input type="url" name="website" value={website_url} onChange={e => setWebsite_url(e.target.value)} />
-            <label>Primary Instrument</label>
-            <select onChange={handleInstrumentChange}>
+        <form className='user-signup' onSubmit={handleSubmit}>
+            <label className='user-signup__label'>Name</label>
+            <input className='user-signup__input' type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
+            <label className='user-signup__label'>Email</label>
+            <input className='user-signup__input' type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
+            <label className='user-signup__label'>Telephone</label>
+            <input className='user-signup__input' type="tel" name="telephone" value={telephone} onChange={e => setTelephone(e.target.value)} />
+            <label className='user-signup__label'>City</label>
+            <input className='user-signup__input' type="text" name="city" value={city} onChange={e => setCity(e.target.value)} />
+            <label className='user-signup__label'>Website URL</label>
+            <input className='user-signup__input' type="url" name="website" value={website_url} onChange={e => setWebsite_url(e.target.value)} />
+            <label className='user-signup__label'>Primary Instrument</label>
+            <select className='user-signup__dropdown' onChange={handleInstrumentChange}>
                 <option value="">Select Primary Instrument</option>
                 {instruments.map(instrument => (
                     <option key={instrument} value={instrument}>

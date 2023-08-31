@@ -8,6 +8,10 @@ a {
 
 .header {
     background-color: $primary-blue; 
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
     &__nav {
         display: flex;

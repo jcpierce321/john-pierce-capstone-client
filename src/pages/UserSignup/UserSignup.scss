@@ -1,0 +1,34 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/colors" as *;
+
+* {
+    box-sizing: border-box;
+}
+
+.user-signup {
+    margin: 2rem 1rem;
+
+    &__label {
+            font-family: "Open Sans";
+            font-size: 0.688rem;
+            line-height: 1rem;
+            font-weight: 600;
+            color: $primary-red;
+    }
+
+    &__input {
+        width: 100%;
+        height: 2rem;
+        border: 2px solid $primary-blue;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+    }
+
+    &__dropdown {
+        width: 100%;
+        font-family: "Open Sans";
+        height: 2rem;
+        border: 2px solid $primary-blue;
+        border-radius: 8px;
+    }
+}
