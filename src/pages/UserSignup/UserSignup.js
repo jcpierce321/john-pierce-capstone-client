@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UserSignup.scss';
 
@@ -30,6 +31,10 @@ function UserSignup() {
             selected: false
         }))
     );
+
+    const navigate = useNavigate();
+
+    const [users, setUsers] = useState([]);
 
     const handleInstrumentChange = (e) => {
         setSelectedInstrument(e.target.value);
@@ -69,11 +74,36 @@ function UserSignup() {
             const userResponse = await axios.post(`${API_URL}:${PORT}/users`, userData);
             console.log(userResponse.data)
 
-            console.log('User data:', userResponse.data);
+            setUsers([userResponse.data, ...users]);
+
+            alert('Signup successful!')
+
+            fetchUsers();
+
+            navigate('/');
+
         } catch (error) {
             console.error('Error creating user or instrument preferences:', error);
         }
     };
+
+    const fetchUsers = () => {
+        axios
+            .get(`${API_URL}:${PORT}/users`)
+            .then((res) => {
+                const usersData = res.data;
+                console.log(usersData);
+                const sortedUsers = usersData.sort((a, b) => b.timestamp - a.timestamp);
+                setUsers(sortedUsers)
+            })
+            .catch((error) => {
+                console.error("Error fetching users:", error);
+            });
+    };
+    
+    useEffect(() => {
+        fetchUsers();
+    }, []);
 
     const [isActive, setIsActive] = useState({
         name: false,
@@ -81,7 +111,6 @@ function UserSignup() {
         telephone: false,
         city: false,
         website: false,
-        // ... add more fields as needed
       });
 
     return (

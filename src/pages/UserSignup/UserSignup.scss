@@ -72,10 +72,11 @@ input {
         font-size: 0.688rem;
         line-height: 1rem;
         font-weight: 600;
-        background-color: $primary-orange;
+        background-color: $primary-red;
         color: white;
         border-radius: 8px;
         border: 2px solid $primary-blue;
+        cursor: pointer;
     }
 }
 
