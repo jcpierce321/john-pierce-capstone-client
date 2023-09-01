@@ -44,7 +44,8 @@ function Homepage () {
     
     return (
         <div className="user-list">
-            <h1 className='user-list__title'>User List</h1>
+            <h1 className='user-list__title'>FIND A MUSICIAN</h1>
+            <p className='user-list__text'>Doubler: a musician who plays two or more instruments from the woodwind family. Most Broadway orchestrations depend heavily on these gifted musicians. Find a doubler for your show right here.</p>
             <ul className="user-list__list">
                 {users.map(user => (
                     <li className='user-list__card' key={user.id}>

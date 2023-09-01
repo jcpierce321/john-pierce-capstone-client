@@ -75,42 +75,79 @@ function UserSignup() {
         }
     };
 
+    const [isActive, setIsActive] = useState({
+        name: false,
+        email: false,
+        telephone: false,
+        city: false,
+        website: false,
+        // ... add more fields as needed
+      });
+
     return (
-        <form className='user-signup' onSubmit={handleSubmit}>
-            <label className='user-signup__label'>Name</label>
-            <input className='user-signup__input' type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
-            <label className='user-signup__label'>Email</label>
-            <input className='user-signup__input' type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
-            <label className='user-signup__label'>Telephone</label>
-            <input className='user-signup__input' type="tel" name="telephone" value={telephone} onChange={e => setTelephone(e.target.value)} />
-            <label className='user-signup__label'>City</label>
-            <input className='user-signup__input' type="text" name="city" value={city} onChange={e => setCity(e.target.value)} />
-            <label className='user-signup__label'>Website URL</label>
-            <input className='user-signup__input' type="url" name="website" value={website_url} onChange={e => setWebsite_url(e.target.value)} />
-            <label className='user-signup__label'>Primary Instrument</label>
-            <select className='user-signup__dropdown' onChange={handleInstrumentChange}>
-                <option value="">Select Primary Instrument</option>
-                {instruments.map(instrument => (
-                    <option key={instrument} value={instrument}>
-                        {instrument}
-                    </option>
+        <>
+            <h1 className='user-signup__title'>SIGN UP</h1>
+            <form className='user-signup' onSubmit={handleSubmit}>
+                <label className={`user-signup__label ${isActive.name ? 'active' : ''}`}>NAME</label>
+                <input
+                    className={`user-signup__input ${isActive.name ? 'active' : ''}`}
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)} />
+                <label className={`user-signup__label ${isActive.email ? 'active' : ''}`}>EMAIL</label>
+                <input
+                    className={`user-signup__input ${isActive.email ? 'active' : ''}`}
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)} />
+                <label className={`user-signup__label ${isActive.telephone ? 'active' : ''}`}>TELEPHONE</label>
+                <input
+                    className={`user-signup__input ${isActive.telephone ? 'active' : ''}`}
+                    type="tel"
+                    name="telephone"
+                    value={telephone}
+                    onChange={e => setTelephone(e.target.value)} />
+                <label className={`user-signup__label ${isActive.city ? 'active' : ''}`}>CITY</label>
+                <input
+                    className={`user-signup__input ${isActive.city ? 'active' : ''}`}
+                    type="text"
+                    name="city"
+                    value={city}
+                    onChange={e => setCity(e.target.value)} />
+                <label className={`user-signup__label ${isActive.website_url ? 'active' : ''}`}>WEBSITE URL</label>
+                <input
+                    className={`user-signup__input ${isActive.website_url ? 'active' : ''}`}
+                    type="url"
+                    name="website"
+                    value={website_url}
+                    onChange={e => setWebsite_url(e.target.value)} />
+                <label className='user-signup__label'>PRIMARY INSTRUMENT</label>
+                <select className='user-signup__dropdown' onChange={handleInstrumentChange}>
+                    <option value="">Select Primary Instrument</option>
+                    {instruments.map(instrument => (
+                        <option key={instrument} value={instrument}>
+                            {instrument}
+                        </option>
+                    ))}
+                </select>
+                <label className='user-signup__label'>I DOUBLE ON</label>
+                {selectedInstruments.map(item => (
+                    <div key={item.instrument}>
+                        <input
+                            type="checkbox"
+                            id={item.instrument}
+                            name={item.instrument}
+                            checked={item.selected}
+                            onChange={() => handleCheckboxChange(item.instrument)}
+                        />
+                        <label className='user-signup__checkbox-label' htmlFor={item.instrument}>{item.instrument}</label>
+                    </div>
                 ))}
-            </select>
-            <label>I double on:</label>
-            {selectedInstruments.map(item => (
-                <div key={item.instrument}>
-                    <input
-                        type="checkbox"
-                        id={item.instrument}
-                        name={item.instrument}
-                        checked={item.selected}
-                        onChange={() => handleCheckboxChange(item.instrument)}
-                    />
-                    <label htmlFor={item.instrument}>{item.instrument}</label>
-                </div>
-            ))}
-            <button type='submit'>Submit</button>
-        </form>
+                <button className='user-signup__button' type='submit'>SUBMIT</button>
+            </form>
+        </>
     );
 }
 
