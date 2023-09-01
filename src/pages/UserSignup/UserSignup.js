@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UserSignup.scss';
@@ -12,8 +12,8 @@ function UserSignup() {
         'Piccolo',
         'Oboe',
         'Bassoon',
-        'B-flat Clarinet',
-        'E-flat Clarinet',
+        'B-flat clarinet',
+        'E-flat clarinet',
         'Alto Saxophone',
         'Tenor Saxophone',
         'Baritone Saxophone'
@@ -63,8 +63,8 @@ function UserSignup() {
             piccolo: selectedInstruments.find(item => item.instrument === 'Piccolo').selected,
             oboe: selectedInstruments.find(item => item.instrument === 'Oboe').selected,
             bassoon: selectedInstruments.find(item => item.instrument === 'Bassoon').selected,
-            clarinetBb: selectedInstruments.find(item => item.instrument === 'B-flat Clarinet').selected,
-            clarinetEb: selectedInstruments.find(item => item.instrument === 'E-flat Clarinet').selected,
+            clarinetBb: selectedInstruments.find(item => item.instrument === 'B-flat clarinet').selected,
+            clarinetEb: selectedInstruments.find(item => item.instrument === 'E-flat clarinet').selected,
             saxAlto: selectedInstruments.find(item => item.instrument === 'Alto Saxophone').selected,
             saxTenor: selectedInstruments.find(item => item.instrument === 'Tenor Saxophone').selected,
             saxBaritone: selectedInstruments.find(item => item.instrument === 'Baritone Saxophone').selected
@@ -74,11 +74,21 @@ function UserSignup() {
             const userResponse = await axios.post(`${API_URL}:${PORT}/users`, userData);
             console.log(userResponse.data)
 
-            setUsers([userResponse.data, ...users]);
+            const newUser = userResponse.data;
+            setUsers((prevUsers) => [newUser, ...prevUsers]);
+
+            setName('');
+            setEmail('');
+            setTelephone('');
+            setCity('');
+            setWebsite_url('');
+            setSelectedInstrument('');
+            setSelectedInstruments(instruments.map(item => ({
+                instrument: item,
+                selected: false
+            })));
 
             alert('Signup successful!')
-
-            fetchUsers();
 
             navigate('/');
 
@@ -86,24 +96,6 @@ function UserSignup() {
             console.error('Error creating user or instrument preferences:', error);
         }
     };
-
-    const fetchUsers = () => {
-        axios
-            .get(`${API_URL}:${PORT}/users`)
-            .then((res) => {
-                const usersData = res.data;
-                console.log(usersData);
-                const sortedUsers = usersData.sort((a, b) => b.timestamp - a.timestamp);
-                setUsers(sortedUsers)
-            })
-            .catch((error) => {
-                console.error("Error fetching users:", error);
-            });
-    };
-    
-    useEffect(() => {
-        fetchUsers();
-    }, []);
 
     const [isActive, setIsActive] = useState({
         name: false,

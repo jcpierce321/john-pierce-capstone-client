@@ -27,11 +27,11 @@ function UserSearch() {
         'Piccolo',
         'Oboe',
         'Bassoon',
-        'B-flat Clarinet',
-        'E-flat Clarinet',
-        'Alto Saxophone',
-        'Tenor Saxophone',
-        'Baritone Saxophone',
+        'B-flat clarinet',
+        'E-flat clarinet',
+        'Alto saxophone',
+        'Tenor saxophone',
+        'Baritone saxophone',
     ];
 
     const [selectedInstruments, setSelectedInstruments] = useState(
@@ -50,13 +50,12 @@ function UserSearch() {
         const selectedInstrumentsArray = selectedInstruments
             .filter(item => item.selected)
             .map(item => item.name);
-
-        const selectedInstrumentsString = selectedInstrumentsArray.join(',');
+    
 
         try {
             const response = await axios.get(`${API_URL}:${PORT}/users/search`, {
                 params: {
-                    instruments: selectedInstrumentsString
+                    instruments: selectedInstrumentsArray
                 }
             });
 
@@ -76,9 +75,9 @@ function UserSearch() {
     };
 
     return (
-        <div>
+        <>
+            <h1 className='user-signup__title'>SEARCH</h1>
             <form onSubmit={handleSearch}>
-                <label>Search</label>
                 {selectedInstruments.map(item => (
                     <Checkbox
                         key={item.id}
@@ -93,7 +92,7 @@ function UserSearch() {
 
             {searchResults && (
                 <div>
-                    <h2>Search Results</h2>
+                    <h2>SEARCH RESULTS</h2>
                     <ul>
                         {searchResults.map(user => (
                             <li key={user.user_id}>{user.name}</li>
@@ -101,7 +100,7 @@ function UserSearch() {
                     </ul>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

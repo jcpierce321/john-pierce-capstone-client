@@ -1,0 +1,19 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/colors" as *;
+
+* {
+    box-sizing: border-box;
+}
+
+.user-search {
+    margin: 2rem 1rem;
+
+    &__title {
+        font-family: "open Sans";
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+        color: $primary-blue;
+    }
+}
