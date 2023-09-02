@@ -1,5 +1,6 @@
 @use "../../styles/partials/font";
 @use "../../styles/partials/colors" as *;
+@use '../../styles/partials/breakpoints' as *;
 
 a {
     text-decoration: none;
@@ -12,10 +13,25 @@ a {
 
 .header {
     background-color: $primary-blue; 
-    height: 8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-bottom: 0.5rem;
+
+        @include tablet {
+            padding: 0 12rem;
+            padding-bottom: 0.5rem;
+        }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+
+    &__logo-image {
+        height: 4rem;
+    }
 
     &__nav {
         display: flex;
@@ -35,6 +51,11 @@ a {
         font-size: 0.813rem;
         line-height: 1.25rem;
         font-weight: 700;
+
+            @include tablet {
+                font-size: 0.875rem;
+                line-height: 1.375rem;
+            }
     }
 
 

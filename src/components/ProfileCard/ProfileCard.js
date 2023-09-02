@@ -23,7 +23,7 @@ function ProfileCard({ user, onClose }) {
                 </div>
                         
                         
-                <div className='user-list__card-content'>
+                {/* <div className='user-list__card-content'>
                     <label className='user-list__label'>SECONDARY INSTRUMENTS</label>
                     <ul>
                         {Object.entries(user)
@@ -34,7 +34,7 @@ function ProfileCard({ user, onClose }) {
                                 </li>
                             ))}
                     </ul>
-                </div>
+                </div> */}
 
         </div>
     );

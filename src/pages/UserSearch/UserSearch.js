@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './UserSearch.scss';
 
@@ -76,7 +77,7 @@ function UserSearch() {
 
     return (
         <>
-            <h1 className='user-signup__title'>SEARCH</h1>
+            <h1 className='user-search__title'>SEARCH</h1>
             <form onSubmit={handleSearch}>
                 {selectedInstruments.map(item => (
                     <Checkbox
@@ -92,10 +93,12 @@ function UserSearch() {
 
             {searchResults && (
                 <div>
-                    <h2 className='user-signup__title'>SEARCH RESULTS</h2>
+                    <h2 className='user-search__title'>SEARCH RESULTS</h2>
                     <ul>
                         {searchResults.map(user => (
-                            <li className='user-search__text' key={user.user_id}>{user.name}</li>
+                            <li className='user-search__text' key={user.user_id}>
+                                <Link to={`/profile/${user.user_id}`}>{user.name}</Link>
+                            </li>
                         ))}
                     </ul>
                 </div>

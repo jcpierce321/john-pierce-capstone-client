@@ -95,14 +95,6 @@ function UserSignup() {
         }
     };
 
-    const [isActive, setIsActive] = useState({
-        name: false,
-        email: false,
-        telephone: false,
-        city: false,
-        website: false,
-      });
-
     return (
         <>
             <h1 className='user-signup__title'>SIGN UP</h1>

@@ -3,9 +3,6 @@ import Header from './components/Header/Header';
 import Homepage from './pages/Homepage/Homepage';
 import UserSignup from './pages/UserSignup/UserSignup';
 import UserSearch from './pages/UserSearch/UserSearch';
-// import UserList from './components/UserList/UserList';
-// import UserForm from "./components/UserForm/UserForm";
-// import UserSearchForm from './components/UserSearchForm/UserSearchForm';
 
 function App() {
   return (
