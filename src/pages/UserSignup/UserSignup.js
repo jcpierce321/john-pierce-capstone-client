@@ -151,18 +151,23 @@ function UserSignup() {
                         </select>
                     </div>
                 </div>
-                <label className='user-signup__label'>I DOUBLE ON</label>
-                {selectedInstruments.map(item => (
-                    <Checkbox
-                        key={item.instrument}
-                        type="checkbox"
-                        id={item.instrument}
-                        name={item.instrument}
-                        checked={item.selected}
-                        onChange={() => handleCheckboxChange(item.instrument)}
-                    />
-                    
-                ))}
+                <div className='user-signup__checkbox-container'>
+                    <div>
+                        <label className='user-signup__label'>I DOUBLE ON</label>
+                        {selectedInstruments.map(item => (
+                            <Checkbox
+                                key={item.instrument}
+                                type="checkbox"
+                                id={item.instrument}
+                                name={item.instrument}
+                                checked={item.selected}
+                                onChange={() => handleCheckboxChange(item.instrument)}
+                            />
+                            
+                        ))}
+                    </div>
+                    <div className='user-signup__photo'></div>
+                </div>
                 <div className='user-signup__button-container'>
                     <button className='user-signup__button' type='submit'>SUBMIT</button>
                 </div>
