@@ -38,7 +38,6 @@ function UserSearch() {
             .filter(item => item.selected)
             .map(item => item.name);
     
-
         try {
             const response = await axios.get(`${API_URL}:${PORT}/users/search`, {
                 params: {
