@@ -2,6 +2,7 @@ import './Homepage.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Logo from '../../assets/images/music-note.png';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 8080;
@@ -28,19 +29,11 @@ function Homepage ({ signup }) {
           .then((res) => {
             const usersData = res.data;
             if (signup === true) {
-              // put the new user first in the list
-              // Get a copy of the item that needs to be moved.
-                // use .find method
-              // Remove the original item from the array.
-                // use .splice method after we know the position of the object
-              // Insert the copy at the desired index.
-                // use .unshift to insert copy at top of user list 
-              // Return the resultant array.
+
               const newUserData = usersData.find((user) => user.user_id === Number(id));
               console.log(newUserData);
               const indexToDelete = usersData.findIndex((user) => user.user_id === Number(id));
               usersData.splice(indexToDelete, 1)
-
               usersData.unshift(newUserData);
             }
             
@@ -69,6 +62,7 @@ function Homepage ({ signup }) {
             <ul className="user-list__list">
                 {users.map(user => (
                     <li className='user-list__card' key={user.id}>
+                        <img className='user-list__image' src={Logo} />
                         <h2 className='user-list__username'>{user.name}</h2>
                         <label className='user-list__label'>PRIMARY INSTRUMENT</label>
                         <p className='user-list__text'>{user.primary_inst}</p>
@@ -100,7 +94,9 @@ function Homepage ({ signup }) {
                               ))}
                           </ul>
                         </div>
-                        <button className='user-list__button'>CONTACT {user.name}</button>
+                        <div className='user-list__button-container'>
+                          <button className='user-list__button'>CONTACT {user.name}</button>
+                        </div>
                     </li>
                 ))}
             </ul>
