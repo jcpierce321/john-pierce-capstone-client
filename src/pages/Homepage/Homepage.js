@@ -57,7 +57,7 @@ function Homepage ({ signup }) {
     return (
         <div className="user-list">
             {signup && <p>WELCOME TO DUBLR! THANKS FOR SIGNING UP!</p>}
-            <h1 className='user-list__title'>FIND A MUSICIAN</h1>
+            <h1 className='user-list__title'>OUR DOUBLERS</h1>
             <p className='user-list__copy'>Doubler: a musician who plays two or more instruments from the woodwind family.<br />Most Broadway orchestrations depend heavily on these gifted musicians.<br /> Find a doubler for your show right here.</p>
             <ul className="user-list__list">
                 {users.map(user => (
