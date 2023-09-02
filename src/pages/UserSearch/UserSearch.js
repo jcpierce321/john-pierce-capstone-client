@@ -2,25 +2,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Checkbox from '../../components/Checkbox/Checkbox';
 import './UserSearch.scss';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 8080;
-
-function Checkbox({ id, name, checked, onChange }) {
-    return (
-        <div key={id}>
-            <input
-                type='checkbox'
-                id={id}
-                name={name}
-                checked={checked}
-                onChange={onChange}
-            />
-            <label htmlFor={id} className='user-search__checkbox-label'>{name}</label>
-        </div>
-    );
-}
 
 function UserSearch() {
     const instruments = [
@@ -78,23 +64,27 @@ function UserSearch() {
     return (
         <>
             <h1 className='user-search__title'>SEARCH</h1>
-            <form onSubmit={handleSearch}>
-                {selectedInstruments.map(item => (
-                    <Checkbox
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        checked={item.selected}
-                        onChange={() => handleCheckboxChange(item.id)}
-                    />
-                ))}
-                <button className='user-search__button' type='submit'>Search</button>
+            <form className='user-search' onSubmit={handleSearch}>
+                <div className='user-search__checkbox-container'>
+                    {selectedInstruments.map(item => (
+                        <Checkbox
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            checked={item.selected}
+                            onChange={() => handleCheckboxChange(item.id)}
+                        />
+                    ))}
+                </div>
+                <div className='user-search__button-container'>
+                    <button className='user-search__button' type='submit'>Search</button>
+                </div>
             </form>
 
             {searchResults && (
                 <div>
                     <h2 className='user-search__title'>SEARCH RESULTS</h2>
-                    <ul>
+                    <ul className='user-search__list'>
                         {searchResults.map(user => (
                             <li className='user-search__text' key={user.user_id}>
                                 <Link to={`/profile/${user.user_id}`}>{user.name}</Link>

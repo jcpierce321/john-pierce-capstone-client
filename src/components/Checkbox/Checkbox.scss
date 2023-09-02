@@ -1,0 +1,16 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/colors" as *;
+@use '../../styles//partials//breakpoints' as *;
+
+.checkbox {
+    display: flex;
+    margin: 0.25rem;
+
+    &__label {
+        font-family: "Open Sans";
+        font-size: 0.813rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+        padding-left: .5rem;
+    }
+}

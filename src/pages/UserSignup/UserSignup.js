@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Checkbox from "../../components/Checkbox/Checkbox";
 import './UserSignup.scss';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -152,16 +153,15 @@ function UserSignup() {
                 </div>
                 <label className='user-signup__label'>I DOUBLE ON</label>
                 {selectedInstruments.map(item => (
-                    <div className='user-signup__checkbox' key={item.instrument}>
-                        <input
-                            type="checkbox"
-                            id={item.instrument}
-                            name={item.instrument}
-                            checked={item.selected}
-                            onChange={() => handleCheckboxChange(item.instrument)}
-                        />
-                        <label className='user-signup__checkbox-label' htmlFor={item.instrument}>{item.instrument}</label>
-                    </div>
+                    <Checkbox
+                        key={item.instrument}
+                        type="checkbox"
+                        id={item.instrument}
+                        name={item.instrument}
+                        checked={item.selected}
+                        onChange={() => handleCheckboxChange(item.instrument)}
+                    />
+                    
                 ))}
                 <div className='user-signup__button-container'>
                     <button className='user-signup__button' type='submit'>SUBMIT</button>
