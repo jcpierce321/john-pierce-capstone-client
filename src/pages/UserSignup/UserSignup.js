@@ -88,9 +88,7 @@ function UserSignup() {
                 selected: false
             })));
 
-            alert('Signup successful!')
-
-            navigate('/');
+            navigate(`/signupsuccess/${newUser.user_id}`);
 
         } catch (error) {
             console.error('Error creating user or instrument preferences:', error);
@@ -109,37 +107,37 @@ function UserSignup() {
         <>
             <h1 className='user-signup__title'>SIGN UP</h1>
             <form className='user-signup' onSubmit={handleSubmit}>
-                <label className={`user-signup__label ${isActive.name ? 'active' : ''}`}>NAME</label>
+                <label className='user-signup__label'>NAME</label>
                 <input
-                    className={`user-signup__input ${isActive.name ? 'active' : ''}`}
+                    className="user-signup__input"
                     type="text"
                     name="name"
                     value={name}
                     onChange={e => setName(e.target.value)} />
-                <label className={`user-signup__label ${isActive.email ? 'active' : ''}`}>EMAIL</label>
+                <label className='user-signup__label'>EMAIL</label>
                 <input
-                    className={`user-signup__input ${isActive.email ? 'active' : ''}`}
+                    className='user-signup__input'
                     type="email"
                     name="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)} />
-                <label className={`user-signup__label ${isActive.telephone ? 'active' : ''}`}>TELEPHONE</label>
+                <label className='user-signup__label'>TELEPHONE</label>
                 <input
-                    className={`user-signup__input ${isActive.telephone ? 'active' : ''}`}
+                    className='user-signup__input'
                     type="tel"
                     name="telephone"
                     value={telephone}
                     onChange={e => setTelephone(e.target.value)} />
-                <label className={`user-signup__label ${isActive.city ? 'active' : ''}`}>CITY</label>
+                <label className='user-signup__label'>CITY</label>
                 <input
-                    className={`user-signup__input ${isActive.city ? 'active' : ''}`}
+                    className='user-signup__input'
                     type="text"
                     name="city"
                     value={city}
                     onChange={e => setCity(e.target.value)} />
-                <label className={`user-signup__label ${isActive.website_url ? 'active' : ''}`}>WEBSITE URL</label>
+                <label className='user-signup__label'>WEBSITE URL</label>
                 <input
-                    className={`user-signup__input ${isActive.website_url ? 'active' : ''}`}
+                    className='user-signup__input'
                     type="url"
                     name="website"
                     value={website_url}

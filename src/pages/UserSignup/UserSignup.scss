@@ -37,7 +37,13 @@ input {
         border-radius: 8px;
         margin-top: 0.25rem;
         margin-bottom: 0.5rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-red;
+        }
     }
 
     &__dropdown {
@@ -48,6 +54,13 @@ input {
         border-radius: 8px;
         margin-top: 0.25rem;
         margin-bottom: 0.5rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-red;
+        }
     }
 
     &__text {
@@ -76,10 +89,11 @@ input {
         color: white;
         border-radius: 8px;
         border: 2px solid $primary-blue;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         cursor: pointer;
     }
 }
 
-.user-signup__input.active {
+.active {
     border-color: red;
 }

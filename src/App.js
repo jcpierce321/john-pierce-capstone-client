@@ -15,6 +15,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/UserSearch' element={<UserSearch />} />
         <Route path='/UserSignup' element={<UserSignup />} />
+        <Route path='/SignupSuccess/:id' element={<Homepage signup={true}/>} />
       </Routes>
     </BrowserRouter>
   );

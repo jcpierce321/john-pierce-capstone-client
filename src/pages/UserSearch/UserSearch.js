@@ -16,7 +16,7 @@ function Checkbox({ id, name, checked, onChange }) {
                 checked={checked}
                 onChange={onChange}
             />
-            <label htmlFor={id}>{name}</label>
+            <label htmlFor={id} className='user-search__checkbox-label'>{name}</label>
         </div>
     );
 }
@@ -87,15 +87,15 @@ function UserSearch() {
                         onChange={() => handleCheckboxChange(item.id)}
                     />
                 ))}
-                <button type='submit'>Search</button>
+                <button className='user-search__button' type='submit'>Search</button>
             </form>
 
             {searchResults && (
                 <div>
-                    <h2>SEARCH RESULTS</h2>
+                    <h2 className='user-signup__title'>SEARCH RESULTS</h2>
                     <ul>
                         {searchResults.map(user => (
-                            <li key={user.user_id}>{user.name}</li>
+                            <li className='user-search__text' key={user.user_id}>{user.name}</li>
                         ))}
                     </ul>
                 </div>

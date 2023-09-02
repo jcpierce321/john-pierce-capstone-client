@@ -1,12 +1,14 @@
 import './Homepage.scss';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT || 8080;
 
-function Homepage () {
+function Homepage ({ signup }) { 
     const [users, setUsers] = useState(null);
+    const { id } = useParams();
 
     const instrumentNames = {
       flute: 'Flute',
@@ -25,6 +27,23 @@ function Homepage () {
           .get(`${API_URL}:${PORT}/users`)
           .then((res) => {
             const usersData = res.data;
+            if (signup === true) {
+              // put the new user first in the list
+              // Get a copy of the item that needs to be moved.
+                // use .find method
+              // Remove the original item from the array.
+                // use .splice method after we know the position of the object
+              // Insert the copy at the desired index.
+                // use .unshift to insert copy at top of user list 
+              // Return the resultant array.
+              const newUserData = usersData.find((user) => user.user_id === Number(id));
+              console.log(newUserData);
+              const indexToDelete = usersData.findIndex((user) => user.user_id === Number(id));
+              usersData.splice(indexToDelete, 1)
+
+              usersData.unshift(newUserData);
+            }
+            
             setUsers(usersData);
     
             console.log(usersData);
@@ -44,6 +63,7 @@ function Homepage () {
     
     return (
         <div className="user-list">
+            {signup && <p>WELCOME TO DUBLR! THANKS FOR SIGNING UP!</p>}
             <h1 className='user-list__title'>FIND A MUSICIAN</h1>
             <p className='user-list__copy'>Doubler: a musician who plays two or more instruments from the woodwind family.<br />Most Broadway orchestrations depend heavily on these gifted musicians.<br /> Find a doubler for your show right here.</p>
             <ul className="user-list__list">
