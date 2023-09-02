@@ -99,53 +99,60 @@ function UserSignup() {
         <>
             <h1 className='user-signup__title'>SIGN UP</h1>
             <form className='user-signup' onSubmit={handleSubmit}>
-                <label className='user-signup__label'>NAME</label>
-                <input
-                    className="user-signup__input"
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={e => setName(e.target.value)} />
-                <label className='user-signup__label'>EMAIL</label>
-                <input
-                    className='user-signup__input'
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)} />
-                <label className='user-signup__label'>TELEPHONE</label>
-                <input
-                    className='user-signup__input'
-                    type="tel"
-                    name="telephone"
-                    value={telephone}
-                    onChange={e => setTelephone(e.target.value)} />
-                <label className='user-signup__label'>CITY</label>
-                <input
-                    className='user-signup__input'
-                    type="text"
-                    name="city"
-                    value={city}
-                    onChange={e => setCity(e.target.value)} />
-                <label className='user-signup__label'>WEBSITE URL</label>
-                <input
-                    className='user-signup__input'
-                    type="url"
-                    name="website"
-                    value={website_url}
-                    onChange={e => setWebsite_url(e.target.value)} />
-                <label className='user-signup__label'>PRIMARY INSTRUMENT</label>
-                <select className='user-signup__dropdown' onChange={handleInstrumentChange}>
-                    <option value="">Select Primary Instrument</option>
-                    {instruments.map(instrument => (
-                        <option key={instrument} value={instrument}>
-                            {instrument}
-                        </option>
-                    ))}
-                </select>
+                <div className='user-signup__parent'>
+                    <div className='user-signup__child'>
+                        <label className='user-signup__label'>NAME</label>
+                        <input
+                            className="user-signup__input"
+                            type="text"
+                            name="name"
+                            value={name}
+                            onChange={e => setName(e.target.value)} />
+                        <label className='user-signup__label'>EMAIL</label>
+                        <input
+                            className='user-signup__input'
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)} />
+                        <label className='user-signup__label'>TELEPHONE</label>
+                        <input
+                            className='user-signup__input'
+                            type="tel"
+                            name="telephone"
+                            placeholder='1-XXX-XXX-XXXX'
+                            value={telephone}
+                            onChange={e => setTelephone(e.target.value)} />
+                    </div>
+                    <div className='user-signup__child'>
+                        <label className='user-signup__label'>CITY</label>
+                        <input
+                            className='user-signup__input'
+                            type="text"
+                            name="city"
+                            value={city}
+                            onChange={e => setCity(e.target.value)} />
+                        <label className='user-signup__label'>WEBSITE URL</label>
+                        <input
+                            className='user-signup__input'
+                            type="url"
+                            name="website"
+                            value={website_url}
+                            onChange={e => setWebsite_url(e.target.value)} />
+                        <label className='user-signup__label'>PRIMARY INSTRUMENT</label>
+                        <select className='user-signup__dropdown' onChange={handleInstrumentChange}>
+                            <option value="">Select Primary Instrument</option>
+                            {instruments.map(instrument => (
+                                <option key={instrument} value={instrument}>
+                                    {instrument}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
                 <label className='user-signup__label'>I DOUBLE ON</label>
                 {selectedInstruments.map(item => (
-                    <div key={item.instrument}>
+                    <div className='user-signup__checkbox' key={item.instrument}>
                         <input
                             type="checkbox"
                             id={item.instrument}
@@ -156,7 +163,9 @@ function UserSignup() {
                         <label className='user-signup__checkbox-label' htmlFor={item.instrument}>{item.instrument}</label>
                     </div>
                 ))}
-                <button className='user-signup__button' type='submit'>SUBMIT</button>
+                <div className='user-signup__button-container'>
+                    <button className='user-signup__button' type='submit'>SUBMIT</button>
+                </div>
             </form>
         </>
     );

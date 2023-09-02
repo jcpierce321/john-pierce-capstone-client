@@ -166,4 +166,14 @@ body {
         }
     }
 
+    &__signup-message {
+        font-family: "open Sans";
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+        color: $primary-blue;
+        margin: 2rem 0;
+    }
+
 }
