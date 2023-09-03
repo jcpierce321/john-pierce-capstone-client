@@ -1,10 +1,48 @@
-import './ProfileCard.scss';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-function ProfileCard({ user, onClose }) {
+import '../../pages/Homepage/Homepage.scss';
+import Logo from '../../assets/images/music-note.png';
+
+const API_URL = process.env.REACT_APP_API_URL;
+const PORT = process.env.REACT_APP_API_PORT || 8080;
+
+function ProfileCard() {
+    const { id } = useParams();
+    const [user, setUser] = useState(null);
+
+    const instrumentNames = {
+        flute: 'Flute',
+        piccolo: 'Piccolo',
+        oboe: 'Oboe',
+        bassoon: 'Bassoon',
+        clarinetBb: 'B-flat clarinet',
+        clarinetEb: 'E-flat clarinet',
+        saxAlto: 'Alto saxophone',
+        saxTenor: 'Tenor saxophone',
+        saxBaritone: 'Baritone saxophone',
+      };
+
+    useEffect(() => {
+        axios.get(`${API_URL}:${PORT}/users/${id}`)
+            .then(response => {
+                setUser(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }, [id]);
+
+    if (!user) {
+            return <div>Loading...</div>
+    }
+
     return (
-        <div className='profile-card'>
-            <button className='profile-card__profile' onClick={onClose}>CLOSE</button>
-            <h2 className='user-list__username'>{user.name}</h2>
+        <div className='user-list'>
+            <div className='user-list__card'>
+                <img className='user-list__image' src={Logo} />
+                <h2 className='user-list__username'>{user.name}</h2>
                 <label className='user-list__label'>PRIMARY INSTRUMENT</label>
                 <p className='user-list__text'>{user.primary_inst}</p>
                 <div className='user-list__parent'>
@@ -23,7 +61,7 @@ function ProfileCard({ user, onClose }) {
                 </div>
                         
                         
-                {/* <div className='user-list__card-content'>
+                <div className='user-list__card-content'>
                     <label className='user-list__label'>SECONDARY INSTRUMENTS</label>
                     <ul>
                         {Object.entries(user)
@@ -34,8 +72,11 @@ function ProfileCard({ user, onClose }) {
                                 </li>
                             ))}
                     </ul>
-                </div> */}
-
+                </div>
+                <div className='user-list__button-container'>
+                    <button className='user-list__button'>CLOSE</button>
+                </div>
+            </div>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import Homepage from './pages/Homepage/Homepage';
 import UserSignup from './pages/UserSignup/UserSignup';
 import UserSearch from './pages/UserSearch/UserSearch';
+import ProfileCard from './components/ProfileCard/ProfileCard';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/UserSearch' element={<UserSearch />} />
         <Route path='/UserSignup' element={<UserSignup />} />
+        <Route path='/user/:id' element={<ProfileCard />} />
         <Route path='/SignupSuccess/:id' element={<Homepage signup={true}/>} />
       </Routes>
     </BrowserRouter>

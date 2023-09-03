@@ -89,7 +89,7 @@ function UserSearch() {
                     <ul className='user-search__list'>
                         {searchResults.map(user => (
                             <li className='user-search__text' key={user.user_id}>
-                                <Link to={`/profile/${user.user_id}`}>{user.name}</Link>
+                                <Link to={`/user/${user.user_id}`}>{user.name}</Link>
                             </li>
                         ))}
                     </ul>
