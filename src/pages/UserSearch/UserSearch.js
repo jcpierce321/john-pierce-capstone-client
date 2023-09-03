@@ -65,23 +65,26 @@ function UserSearch() {
             <h1 className='user-search__title'>SEARCH</h1>
             <form className='user-search' onSubmit={handleSearch}>
                 <div className='user-search__checkbox-container'>
-                    {selectedInstruments.map(item => (
-                        <Checkbox
-                            key={item.id}
-                            id={item.id}
-                            name={item.name}
-                            checked={item.selected}
-                            onChange={() => handleCheckboxChange(item.id)}
-                        />
-                    ))}
-                </div>
+                    <div >
+                        {selectedInstruments.map(item => (
+                            <Checkbox
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                checked={item.selected}
+                                onChange={() => handleCheckboxChange(item.id)}
+                            />
+                        ))}
+                    </div>
+                    <div className='user-search__photo'></div>
+                </div>    
                 <div className='user-search__button-container'>
                     <button className='user-search__button' type='submit'>Search</button>
                 </div>
             </form>
 
             {searchResults && (
-                <div>
+                <div className='user-search__results'>
                     <h2 className='user-search__title'>SEARCH RESULTS</h2>
                     <ul className='user-search__list'>
                         {searchResults.map(user => (

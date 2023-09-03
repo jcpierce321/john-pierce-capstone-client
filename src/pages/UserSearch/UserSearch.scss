@@ -11,14 +11,15 @@ input, button, select {
 }
 
 .user-search {
-    margin: 0 1rem;
+   padding: 1rem;
+   background-color: $background-lightgrey;
 
         @include tablet {
-            margin: 0 6rem;
+            padding: 2rem 6rem;
         }
 
         @include desktop {
-            margin: 0 12rem;
+            padding: 2rem 12rem;
         }
 
     &__title {
@@ -32,14 +33,15 @@ input, button, select {
     }
 
     &__checkbox-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
 
-        @include tablet {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: flex-start;
-            height: auto;
-        }
+            @include tablet {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
     }
 
     &__checkbox {
@@ -67,6 +69,25 @@ input, button, select {
 
             @include desktop {
                 margin: 0 12rem;
+            }
+    }
+
+    &__photo {
+        background-image: url(../../assets/images/theater-photo.jpg);
+        background-size: cover;
+        background-position: center;
+        height: 10rem;
+        width: 100%;
+        opacity: 50%;
+        border-radius: 0.5rem;
+        
+            @include tablet {
+                height: auto;
+                width: 20rem;
+            }
+
+            @include desktop {
+                width: 26rem;
             }
     }
 
@@ -103,5 +124,9 @@ input, button, select {
             &:hover {
                 background-color: $button-active;
             }
+    }
+
+    &__results {
+        background-color: $background-lightgrey;
     }
 }
