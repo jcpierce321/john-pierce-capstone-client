@@ -1,4 +1,5 @@
 @use "../../styles/partials/font";
+@use '../../styles/partials/fontstyles' as *;
 @use "../../styles/partials/colors" as *;
 @use '../../styles//partials//breakpoints' as *;
 
@@ -23,10 +24,7 @@ input, button, select {
         }
 
     &__title {
-        font-family: "Open Sans";
-        font-size: 1.75rem;
-        line-height: 2.25rem;
-        font-weight: 700;
+        @include title-page;
         text-align: center;
         color: $primary-blue;
         margin: 2rem 0;
@@ -41,21 +39,15 @@ input, button, select {
                 flex-direction: row;
                 justify-content: space-between;
             }
-
     }
 
-    &__checkbox {
-        display: flex;
-        margin: 0.25rem;
-    }
-
-    &__checkbox-label,
     &__text {
-        font-family: "Open Sans";
-        font-size: 0.813rem;
-        line-height: 1.25rem;
-        font-weight: 400;
+        @include text-regular;
         padding-left: .5rem;
+
+            @include desktop {
+                font-size: 0.825rem;
+            }
     }
 
     &__list {

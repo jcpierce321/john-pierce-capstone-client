@@ -1,4 +1,5 @@
 @use "../../styles/partials/font";
+@use '../../styles/partials/fontstyles' as *;
 @use "../../styles/partials/colors" as *;
 @use '../../styles/partials/breakpoints' as *;
 
@@ -36,18 +37,11 @@ body {
     }
 
     &__title {
-        font-family: "Open Sans";
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-        font-weight: 700;
+        @include title-footer;
         color: $primary-black;
-        font-size: 2rem;
     }
 
-    &__logo {
-        height: 1.75rem;
-    }
-
+    &__logo,
     &__image {
         height: 1.75rem;
     }

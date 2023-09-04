@@ -1,4 +1,5 @@
 @use "../../styles/partials/font";
+@use '../../styles/partials/fontstyles' as *;
 @use "../../styles/partials/colors" as *;
 @use '../../styles/partials/breakpoints' as *;
 
@@ -42,24 +43,18 @@ a {
     }
 
     &__title {
-        font-family: "open Sans";
-        font-size: 3rem;
-        line-height: 2.25rem;
-        font-weight: 700;
+        @include title-header;
         text-align: center;
     }
 
     &__text {
-        font-family: "Open Sans";
-        font-size: 0.813rem;
-        line-height: 1.25rem;
-        font-weight: 700;
+        @include text; 
 
             @include tablet {
-                font-size: 0.875rem;
-                line-height: 1.375rem;
             }
     }
+}
 
-
+.active {
+    color: $primary-red;
 }

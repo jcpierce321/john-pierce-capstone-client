@@ -1,4 +1,5 @@
 @use "../../styles/partials/font";
+@use '../../styles/partials/fontstyles' as *;
 @use "../../styles/partials/colors" as *;
 @use '../../styles/partials/breakpoints' as *;
 
@@ -60,20 +61,14 @@ body {
     }
 
     &__title {
-        font-family: "open Sans";
-        font-size: 1.75rem;
-        line-height: 2.25rem;
-        font-weight: 700;
+        @include title-page;
         text-align: center;
         color: $primary-blue;
         margin: 2rem 0;
     }
 
     &__copy {
-        font-family: "Open Sans";
-        font-size: 0.813rem;
-        line-height: 1.25rem;
-        font-weight: 700;
+        @include text;
         text-align: center;
         margin: 0 0 3rem 0;
 
@@ -106,26 +101,17 @@ body {
     }
 
     &__username {
-        font-family: "Open Sans";
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-        font-weight: 700;
+        @include username;
         color: $primary-black;
     }
 
     &__label {
-        font-family: "Open Sans";
-        font-size: 0.688rem;
-        line-height: 1rem;
-        font-weight: 600;
+        @include label-small;
         color: $primary-red;
     }
 
     &__text {
-        font-family: "Open Sans";
-        font-size: 0.75rem;
-        line-height: 1rem;
-        font-weight: 400;
+        @include text-regular;
         margin-top: 0.125rem;
         color: $primary-black;
 
@@ -169,13 +155,9 @@ body {
     }
 
     &__signup-message {
-        font-family: "open Sans";
-        font-size: 1.75rem;
-        line-height: 2.25rem;
-        font-weight: 700;
+        @include title-page;
         text-align: center;
         color: $primary-blue;
         margin: 2rem 0;
     }
-
 }
