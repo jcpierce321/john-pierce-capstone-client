@@ -5,6 +5,7 @@
 a {
     text-decoration: none;
     color: $primary-black;
+    height: 1.75rem;
 
     &:hover {
         color: $primary-red;
@@ -16,11 +17,13 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding-bottom: 0.5rem;
 
         @include tablet {
             padding: 0 12rem;
-            padding-bottom: 0.5rem;
+        }
+        
+        @include desktop {
+            padding: 0 24rem;
         }
 
     &__logo {

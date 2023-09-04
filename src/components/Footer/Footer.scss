@@ -1,0 +1,54 @@
+@use "../../styles/partials/font";
+@use "../../styles/partials/colors" as *;
+@use '../../styles/partials/breakpoints' as *;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.footer {
+    background-color: $primary-blue;
+    padding-bottom: 1.5rem;
+
+        @include tablet {
+            padding: 0 12rem 1.5rem 12rem;
+        }
+
+        @include desktop {
+            padding: 0 24rem 1.5rem 24rem;
+        }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__tags {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 6rem;
+    }
+
+    &__title {
+        font-family: "Open Sans";
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 700;
+        color: $primary-black;
+        font-size: 2rem;
+    }
+
+    &__logo {
+        height: 1.75rem;
+    }
+
+    &__image {
+        height: 1.75rem;
+    }
+}
