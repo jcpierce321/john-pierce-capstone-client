@@ -2,6 +2,7 @@
 @use '../../styles/partials/fontstyles' as *;
 @use "../../styles/partials/colors" as *;
 @use '../../styles/partials/breakpoints' as *;
+@use '../../styles/mixins.scss' as *;
 
 * {
     box-sizing: border-box;
@@ -131,17 +132,8 @@ body {
     }
 
     &__button {
-        width: 100%;
-        height: 2rem;
+        @include button;
         margin-top: auto;
-        font-family: "Open Sans";
-        font-size: 0.688rem;
-        line-height: 1rem;
-        font-weight: 600;
-        background-color: $primary-red;
-        color: white;
-        border-radius: 8px;
-        border: none;
         cursor: pointer;
 
             @include tablet {
