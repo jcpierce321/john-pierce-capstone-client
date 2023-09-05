@@ -21,7 +21,7 @@ input, button, select {
         }
 
         @include desktop {
-            padding: 2rem 12rem;
+            padding: 2rem 16rem;
         }
 
     &__title {
@@ -104,5 +104,6 @@ input, button, select {
 
     &__results {
         background-color: $background-lightgrey;
+        padding-bottom: 2rem;
     }
 }

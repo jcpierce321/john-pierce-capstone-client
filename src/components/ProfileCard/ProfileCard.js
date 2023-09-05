@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import '../../pages/Homepage/Homepage.scss';
+import './ProfileCard.scss';
 import Logo from '../../assets/images/music-note.png';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -39,8 +40,8 @@ function ProfileCard() {
     }
 
     return (
-        <div className='user-list'>
-            <div className='user-list__card'>
+        <div className='user-list profile-card'>
+            <div className='user-list__card profile-card__card'>
                 <img className='user-list__image' src={Logo} />
                 <h2 className='user-list__username'>{user.name}</h2>
                 <label className='user-list__label'>PRIMARY INSTRUMENT</label>
@@ -74,8 +75,11 @@ function ProfileCard() {
                     </ul>
                 </div>
                 <div className='user-list__button-container'>
-                    <button className='user-list__button'>CLOSE</button>
+                    <button className='user-list__button'>CONTACT {user.name}</button>
                 </div>
+            </div>
+            <div className='user-list__button-container'>
+                <button className='user-list__button button'>CLOSE</button>
             </div>
         </div>
     );
