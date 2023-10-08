@@ -91,6 +91,7 @@ input, button, select {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        margin-top: 2rem;
 
             @include tablet {
                 flex-direction: row;

@@ -3,6 +3,15 @@ Project Title: DUBLR
 Author:	John Carlo Pierce
 Cohort: Software Engineering, June 2023
 
+To get a local copy up and running, download and install Node.js, then follow this steps:
+
+1. Clone the repo to your local machine : git clone https://github.com/jcpierce321/john-pierce-capstone-client
+2. Navigate to the project folder: cd john-pierce-capstone-client
+3. Install dependencies: npm install
+4. Environment Variables: Set up any necessary environment variables. If your project uses environment variables for configuration, create a .env file in the project root and add your environment-specific values.
+5. Database Setup: If your project involves a database, make sure your database server is running and create any required tables or schemas.
+6. Start the Application: npm start
+
 
 1. Project Overview
 
@@ -57,26 +66,28 @@ End-point
 Response Format
 HTTP GET - /users
 HTTP GET - /users/search
-HTTP GET - /users/:id 
+HTTP GET - /users/:id
+
 { users : [
-{user_Id : NUMBER
-name : ‘STRING’,
-email: ‘STRING’,
-telephone: ‘STRING’,
-city: ‘STRING’
-website_URL: ‘STRING’
-primary_instrument: ‘STRING’}
+    {user_Id : NUMBER
+    name : ‘STRING’,
+    email: ‘STRING’,
+    telephone: ‘STRING’,
+    city: ‘STRING’
+    website_URL: ‘STRING’
+    primary_instrument: ‘STRING’}
 ]
+
 HTTP POST -/users
 { users : [
-{user_Id : NUMBER
-name : ‘STRING’,
-email: ‘STRING’,
-telephone: ‘STRING’,
-city: ‘STRING’
-website_URL: ‘STRING’
-primary_instrument: ‘STRING’}
-]
+    {user_Id : NUMBER
+    name : ‘STRING’,
+    email: ‘STRING’,
+    telephone: ‘STRING’,
+    city: ‘STRING’
+    website_URL: ‘STRING’
+    primary_instrument: ‘STRING’}
+    ]
 
 Database Structure
 USERS
@@ -88,7 +99,7 @@ city
 primary_inst
 webiste_url
 flute
-Piccolo
+piccolo
 oboe,
 bassoon,
 clarinetBb,

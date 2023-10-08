@@ -134,6 +134,8 @@ body {
     &__button {
         @include button;
         margin-top: auto;
+        display: flex;
+        align-items: center;
         cursor: pointer;
 
             @include tablet {

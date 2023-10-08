@@ -13,6 +13,8 @@ function ProfileCard() {
     const { id } = useParams();
     const [user, setUser] = useState(null);
 
+    console.log("User ID:", id);
+
     const instrumentNames = {
         flute: 'Flute',
         piccolo: 'Piccolo',
@@ -36,7 +38,7 @@ function ProfileCard() {
     }, [id]);
 
     if (!user) {
-            return <div>Loading...</div>
+            return <div>Loading...</div>;
     }
 
     return (
@@ -75,7 +77,12 @@ function ProfileCard() {
                     </ul>
                 </div>
                 <div className='user-list__button-container'>
-                    <button className='user-list__button'>CONTACT {user.name}</button>
+                    <a
+                        href={`mailto:${user.email}?subject=Regarding%20DUBLR%20Contact&body=Hello%20${user.name},`}
+                        className='user-list__button'
+                    >
+                        CONTACT {user.name}
+                    </a>
                 </div>
             </div>
             <div className='user-list__button-container'>

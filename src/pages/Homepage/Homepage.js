@@ -38,8 +38,7 @@ function Homepage ({ signup }) {
             }
             
             setUsers(usersData);
-    
-            console.log(usersData);
+
           })
           .catch((error) => {
             console.error("Error fetching users:", error);
@@ -93,6 +92,14 @@ function Homepage ({ signup }) {
                                 </li>
                               ))}
                           </ul>
+                        </div>
+                        <div className='user-list__button-container'>
+                            <a
+                              href={`mailto:${user.email}?subject=Regarding%20DUBLR%20Contact&body=Hello%20${user.name},`}
+                              className='user-list__button'
+                            >
+                              CONTACT {user.name}
+                            </a>
                         </div>
                     </li>
                 ))}
